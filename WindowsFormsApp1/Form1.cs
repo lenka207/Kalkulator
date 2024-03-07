@@ -937,7 +937,7 @@ public Form1()
                     if (unos.Text[0] == '-' )
                     {
                         ulazniString1 = ulazniString1.Substring(1);
-                        p = Operacije.Oduzmi(ulazniString2, ulazniString1);
+                        ispis.Text = Operacije.Oduzmi(ulazniString2, ulazniString1);
                         //ispis.Text = Alati.SkloniNule(p); ne vracaj
                     }
                     if (unos2.Text[0] == '-')
@@ -1158,12 +1158,14 @@ public Form1()
                     }
                     else 
                     { 
+                        if(int.Parse(koliko) > 20)
+                        {
+                            MessageBox.Show("sledeci put stavite manje decimala");
+                        }
                     string rezzzz = Operacije.Deljenje(broj1, broj2, koliko);
                     ispis.Text = (rezzzz);
                     }
-                   
 
-                    
                 }
                 else 
                 {
@@ -1190,10 +1192,14 @@ public Form1()
                     if (ulazniString2 == "0")
                     {
                         MessageBox.Show("Ne sme da se deli sa 0");
+
                     }
                     else
                     {
-
+                        if (koliko > 20)
+                        {
+                            MessageBox.Show("sledeci put stavite manje decimala");
+                        }
 
                         if (textBox1.Text == "")
                         {
