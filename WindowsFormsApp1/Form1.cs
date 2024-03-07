@@ -1169,6 +1169,7 @@ public Form1()
                 }
                 else 
                 {
+
                     int i, j;
                     string ispis1 = "";
                     int[] rez = new int[260];
