@@ -399,6 +399,7 @@ namespace WindowsFormsApp1
             }
 
             return ispis3;
+
             //ispis.Text = ispis3.ToString();
         }
 
@@ -654,6 +655,7 @@ namespace WindowsFormsApp1
                         }
                     }
                 }
+
             }
             int pommm = ispis1.Length;
             if (obrtanje2 == 0)
