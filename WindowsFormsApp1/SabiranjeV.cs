@@ -399,7 +399,6 @@ namespace WindowsFormsApp1
             }
 
             return ispis3;
-
             //ispis.Text = ispis3.ToString();
         }
 
