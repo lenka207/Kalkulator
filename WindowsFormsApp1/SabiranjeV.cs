@@ -416,6 +416,7 @@ namespace WindowsFormsApp1
             int brKaraktera2 = ulazniString2.Length;
             int[] drniz = new int[260];
             int[] drniz1 = new int[260];
+            int[] ceo = new int[260];
             int broj = 0;
             int brojj = 0;
             int pok = 0;
@@ -679,7 +680,15 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-
+            int brojimo = 0;
+            for (i = 0; i < ceobr.Length; i++)
+            {
+                if (int.TryParse(ceobr[i].ToString(), out int broj5))
+                {
+                    ceo[i] = broj5;
+                    brojimo++;
+                }
+            }
             for (i = pomm - 1; i >= 0; i--)
             {
 
@@ -692,12 +701,25 @@ namespace WindowsFormsApp1
                         j = i - 1;
                         if (j < 0)
                         {
-
                             if (flag == 0)
                             {
-                                ceobr = (int.Parse(ceobr) - 1).ToString();
+                                int l = ceobr.Length - 1;
+                                if (ceo[l] == 0)
+                                {
+                                    while (ceobr[l] == 0)
+                                    {
+                                        ceo[l] = 9;
+                                        l--;
+                                        if (l == 0)
+                                        {
+                                            ceobr = "-1";
+                                        }
+                                    }
+                                    ceo[l] = ceo[l] - 1;
+                                }
+                                else
+                                ceo[l] = ceo[l] - 1;
                             }
-
                             break;
                         }
                         while (pariz[j] == 0)
@@ -706,8 +728,22 @@ namespace WindowsFormsApp1
 
                             if (j <= 0)
                             {
-                                //MessageBox.Show("u if-u sam ");
-                                ceobr = (int.Parse(ceobr) - 1).ToString();
+                                int l = ceobr.Length - 1;
+                                if (ceo[l] == 0)
+                                {
+                                    while (ceobr[l] == 0)
+                                    {
+                                        ceo[l] = 9;
+                                        l--;
+                                        if (l == 0)
+                                        {
+                                            ceobr = "-1";
+                                        }
+                                    }
+                                    ceo[l] = ceo[l] - 1;
+                                }
+                                else
+                                { ceo[l] = ceo[l] - 1; }
                                 flag = 1;
                                 break;
                             }
@@ -719,8 +755,6 @@ namespace WindowsFormsApp1
                     }
                     else rez[i] = pariz[i] - drniz[i];
                 }
-
-
 
             }
 
@@ -734,9 +768,14 @@ namespace WindowsFormsApp1
                 }
             }
             ispis3 = ".";
+            ceobr = "";
             for (i = 0; i < br; i++)
             {
                 ispis3 = ispis3 + int.Parse(rez[i].ToString());
+            }
+            for (i = 0; i < brojimo; i++)
+            {
+                ceobr = ceobr + int.Parse(ceo[i].ToString());
             }
 
 
@@ -1175,16 +1214,26 @@ namespace WindowsFormsApp1
 }
 // prebacili smo iz textBox-a u niz
 // ako ima tacku na prvom tacka - 1 ako je na 2 ond tacka + 1
-for (i = 0; i < ispis2.Length; i++)
-{
-    broj1 = broj1 + ispis1[i];
-    broj2 = broj2 + ispis2[i];
-}
+            for (i = 0; i < ispis2.Length; i++)
+            {
+                if (i >= ulazniString1.Length - 1)
+                {
+                    
+                }
+                else
+                {
+                    broj1 = broj1 + ispis1[i];
+                }
+                broj2 = broj2 + ispis2[i];
+            }
 int brkol = ispis2.Length - 1;
-pom1 = broj1;
+            int brkol1 = ispis2.Length - 1;
+            pom1 = broj1;
 pom2 = pom1;
 int brojac = 0;
 flag = 0;
+            int koliko1 = int.Parse(koliko);
+            int necu = 0;
 for (i = ispis2.Length - 1; i < ispis1.Length + int.Parse(koliko); i++)
 {
     //flag = Alati.Uporedi(pom2, broj2);
@@ -1199,24 +1248,33 @@ for (i = ispis2.Length - 1; i < ispis1.Length + int.Parse(koliko); i++)
         rez[brojac] = 0;
     }
     else
-    { rez[brojac] = br1; }
+    {             
+    rez[brojac] = br1; }
     pom1 = pom2;
     flag = 0;
     brojac++;
     brkol++;
     br1 = 0;
     pom1 = Alati.SkloniNule(pom1);
-    if (brkol == ispis1.Length)
+    if (rez[0] == 0 && necu == 0)
+    {
+        rez[brojac] = '.';
+        necu = 1;
+        brojac++;
+    }
+    if (brkol == ispis1.Length && necu == 0)
     {
         rez[brojac] = '.';
         brojac++;
+        koliko1 = int.Parse(koliko);
     }
+    
     if (brkol >= ispis1.Length)
     {
 
         pom1 = pom1 + '0';
         pom2 = pom1;
-        if (brkol == ispis1.Length + int.Parse(koliko))
+        if (brkol == ispis1.Length + int.Parse(koliko) )
         {
             break;
         }

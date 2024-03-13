@@ -1499,9 +1499,7 @@ public Form1()
                 }
                 if (pom2 < 0)
                 {
-                    pom22 = d - p;
-                    ispis.Text = pom22.ToString();
-                    minus1 = 1;
+                    MessageBox.Show(" ne postoje negativni rimski brojevi");
                 }
                 else ispis.Text = pom2.ToString();
             }
